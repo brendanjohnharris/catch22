@@ -7,11 +7,6 @@
 // 5 equal-width bins (BF_HistEdges edges, histcounts counting)
 double DN_HistogramMode_5(const double y[], const int size)
 {
-    for (int i = 0; i < size; i++) {
-        if (isnan(y[i])) {
-            return NAN;
-        }
-    }
     const int nBins = 5;
     double edges[5 + 1];
     int counts[5];

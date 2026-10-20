@@ -11,13 +11,6 @@
 /* helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-static int fc_has_nan(const double * restrict y, const int size)
-{
-    for (int i = 0; i < size; i++) {
-        if (isnan(y[i])) return 1;
-    }
-    return 0;
-}
 
 #define FC_RESID_FIXED(LEN)                                             \
     do {                                                                \
@@ -74,7 +67,6 @@ double fc_local_simple(const double y[], const int size, const int train_length)
 
 double FC_LocalSimple_mean_taurat(const double y[], const int size, const int train_length)
 {
-    if (fc_has_nan(y, size)) return NAN;
     if (size <= train_length) return NAN;
 
     const int n = size - train_length;
@@ -94,7 +86,6 @@ double FC_LocalSimple_mean_taurat(const double y[], const int size, const int tr
 
 double FC_LocalSimple_mean_stderr(const double y[], const int size, const int train_length)
 {
-    if (fc_has_nan(y, size)) return NAN;
     if (size <= train_length) return NAN;
 
     const int n = size - train_length;

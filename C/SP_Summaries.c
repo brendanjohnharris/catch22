@@ -62,11 +62,6 @@ static int sp_fft_spectrum(const double y[], const int size, double ** S, double
 
 static double sp_fft_summary(const double y[], const int size, const char what[])
 {
-    for (int i = 0; i < size; i++) {
-        if (!isfinite(y[i])) {
-            return NAN;
-        }
-    }
     double * S;
     double * w;
     const int nBins = sp_fft_spectrum(y, size, &S, &w);
